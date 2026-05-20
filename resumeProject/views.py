@@ -39,7 +39,7 @@ def addresume(request):
             Phone=phone,
             Email=email,
             CareerObjective=careeerobjective,
-            skills=skills,
+            Skills=skills,
             Certification=certification,
             Projects=projects,
             References=references
@@ -61,6 +61,7 @@ def addresume(request):
         resumeData.save()
         educationData.save()
         workData.save()
+        return redirect('resume')
     return render(request,'addResume.html')
 
 
@@ -91,7 +92,7 @@ def updateresume(request):
         resumeData.FullName=request.POST.get('fullname')
         resumeData.Address=request.POST.get('address')
         resumeData.Phone=request.POST.get('phone')
-        resumeData.Email=request.POST.get('Email')
+        resumeData.Email=request.POST.get('email')
         resumeData.CareerObjective=request.POST.get('careerobjective')
         resumeData.Skills=request.POST.get('skills')
         resumeData.Certification=request.POST.get('certification')
@@ -114,8 +115,9 @@ def updateresume(request):
         resumeData.save()
         educationData.save()
         workData.save()
-
         return redirect('resume')
+
+    return redirect('resume')
 
 def deleteresume(request,myid):
     resumeData=resumeModel.objects.get(id=myid)

@@ -5,7 +5,7 @@
 <div class='container'>
      <h2 class="text-center">Update Resume</h2>
 
-    <form action ="{% url 'updateresume' %}" methon="POST" enctype="multipart/form-date" >
+    <form action ="{% url 'updateresume' %}" method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
         <h2>Resume Model</h2>
 
