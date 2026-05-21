@@ -1,0 +1,90 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9 cols-lg-8 shadow p-5 bg-white rounded">
+            
+            <!-- Profile Header Section -->
+            <div class="row align-items-center mb-4 border-bottom pb-4">
+                <div class="col-md-3 text-center mb-3 mb-md-0">
+                    {% if resumeData.ProfilePicture %}
+                        <img src="{{ resumeData.ProfilePicture.url }}" alt="Profile Picture" class="img-fluid rounded-circle border shadow-sm" style="width: 130px; height: 130px; object-fit: cover;">
+                    {% else %}
+                        <!-- Image na thakle default placeholder icon -->
+                        <div class="bg-light d-flex align-items-center justify-content-center rounded-circle border mx-auto shadow-sm" style="width: 130px; height: 130px;">
+                            <i class="bi bi-person text-secondary" style="font-size: 3rem;"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-9 text-center text-md-start">
+                    <h1 class="fw-bold text-dark mb-1">{{ resumeData.FullName|default:"Your Name" }}</h1>
+                    <p class="text-muted mb-3"><i class="bi bi-geo-alt-fill me-1"></i> {{ resumeData.Address|default:"" }}</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-3 text-secondary">
+                        <span><i class="bi bi-telephone-fill me-1"></i> {{ resumeData.Phone|default:"" }}</span>
+                        <span><i class="bi bi-envelope-fill me-1"></i> {{ resumeData.Email|default:"" }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Objective -->
+            {% if resumeData.CareerObjective %}
+            <div class="mb-4">
+                <h4 class="text-primary fw-semibold border-bottom pb-2">Career Objective</h4>
+                <p class="text-dark lh-base" style="text-align: justify;">{{ resumeData.CareerObjective }}</p>
+            </div>
+            {% endif %}
+
+            <!-- Work Experience -->
+            <div class="mb-4">
+                <h4 class="text-primary fw-semibold border-bottom pb-2">Work Experience</h4>
+                <div class="ps-2">
+                    <h5 class="fw-bold mb-1 text-dark">{{ workData.Position|default:"Position" }}</h5>
+                    <div class="d-flex justify-content-between text-muted mb-2 small">
+                        <span><i class="bi bi-building me-1"></i> {{ workData.Company|default:"Company Name" }}</span>
+                        <span><i class="bi bi-calendar3 me-1"></i> {{ workData.StartDate|default:"" }} - {{ workData.EndDate|default:"" }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="mb-4">
+                <h4 class="text-primary fw-semibold border-bottom pb-2">Education</h4>
+                <div class="ps-2">
+                    <h5 class="fw-bold mb-1 text-dark">{{ educationData.Degree|default:"Degree / Certificate" }}</h5>
+                    <div class="d-flex justify-content-between text-muted mb-2 small">
+                        <span><i class="bi bi-mortarboard-fill me-1 text-secondary"></i> {{ educationData.Institution|default:"Institution Name" }}</span>
+                        <span><i class="bi bi-calendar-check me-1"></i> Graduated: {{ educationData.GraduationYear|default:"" }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Projects -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-primary fw-semibold border-bottom pb-2">Skills</h4>
+                    <p class="text-dark ps-2">{{ resumeData.Skills|default:"No skills added yet." }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-primary fw-semibold border-bottom pb-2">Projects</h4>
+                    <p class="text-dark ps-2">{{ resumeData.Projects|default:"No projects added yet." }}</p>
+                </div>
+            </div>
+
+            <!-- Certifications & References -->
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-primary fw-semibold border-bottom pb-2">Certifications</h4>
+                    <p class="text-dark ps-2">{{ resumeData.Certification|default:"No certifications listed." }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-primary fw-semibold border-bottom pb-2">References</h4>
+                    <p class="text-dark ps-2">{{ resumeData.References|default:"Available upon request." }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

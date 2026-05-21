@@ -129,3 +129,14 @@ def deleteresume(request,myid):
     workdata.delete()
 
     return redirect('resume')
+
+def viewresume(request,myid):
+    resumeData=resumeModel.objects.get(id=myid)
+    educationData=educationModel.objects.get(id=myid)
+    workData=workModel.objects.get(id=myid)
+    context={
+        'resumeData':resumeData,
+        'educationData':educationData,
+        'workData':workData
+    }
+    return render(request,'viewResume.html',context)

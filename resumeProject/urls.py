@@ -13,4 +13,5 @@ urlpatterns = [
     path('deleteresume/<str:myid>',deleteresume,name='deleteresume'),
     path('updateresume/',updateresume,name='updateresume'),
     path('editresume/<str:myid>',editresume,name='editresume'),
+    path('viewresume/<str:myid>',viewresume,name='viewresume'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
